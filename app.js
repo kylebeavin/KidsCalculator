@@ -1,10 +1,8 @@
 $(function(){
 
-    $(".number").on("touchstart", function() {
-       console.log("hey"); 
-
       // Touch Move event handler drag numbers
       $(".number").on("touchmove", function(e){
+        e.preventDefault();
         var touch = event.targetTouches[0];
         event.target.style.left = touch.pageX + 'px';
         event.target.style.top = touch.pageY + 'px';
@@ -12,50 +10,70 @@ $(function(){
 
       // Touch End event handler check if in dropzone
       $(".number").on("touchend", function(e){
-        debugger;
-        var addRect1 = $("#number-x");
-        var numRect1 = event.target.getBoundingClientRect();
-        var numRect2 = addRect1[0].getBoundingClientRect();
-
-        // Check for collision
-        var overlap = overlap();
-
-          if (overlap) {
-            addRectangles();
-          }
+        e.preventDefault();
+        addRectangles();
       });
-    });
+
 });
 
 function addRectangles(){
-  debugger;
   // Get Rectangle values
   var numberX = getNumberValue($("#number-x"));
   var numberY = getNumberValue($("#number-y"));
 
+  if (numberX == ""){
+    numberX = 0;
+  }
+
+  if (numberY == ""){
+    numberY = 0;
+  }
   // Perform Addition and display
-  $("#number-z").val(numberX + numberY);
+  var numberZ = parseInt(numberX) + parseInt(numberY);
+  if (numberZ != 0){
+    $("#number-z").text(numberZ);
+  } else {
+    $("#number-z").text("");
+  }
 }
 
 function getNumberValue(element) {
-  debugger;
+  var firstElement;
+  var numberValue = "";
   // Get this Rectangle
-  var rect1 = element[0].getBoundingClientRect();
+  var thisRect1 = element[0].getBoundingClientRect();
   
   // Check for elements that overlap and get values
   $(".number").each(function(i, v) {
-    var iterationRect = i.getBoundingClientRect();
+    var numberRect = v.getBoundingClientRect();
 
-    overlap();
+    overlap = getOverlap(thisRect1, numberRect);
+      debugger; // TODO: fix this mess to append value based on its position
+    if (overlap){
+      if (numberValue === ""){
+        firstElement = v;
+        numberValue += $(v).html();
+      } else {
+        if (v.style.left > firstElement){
+          firstElement = v;
+          numberValue.append($(v).html());
+        } else {
+          numberValue += $(v).html();
+        }
+      }
+    }
   });
 
-  // var numArr = $("div.number[style='left: " +  + "px; top: " +  + "px;']").val();
-
-  return val
+  return numberValue;
 }
 
-function overlap() {
+function getOverlap(rect1, rect2) {
 
-  // TODO: finish implementing overlap function 
+  // check if two rectangles overlap
+  var overlap = !(rect1.right < rect2.left || 
+    rect1.left > rect2.right || 
+    rect1.bottom < rect2.top || 
+    rect1.top > rect2.bottom)
+
   return overlap;
 }

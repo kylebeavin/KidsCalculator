@@ -5,15 +5,15 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     color: red;   
-    font-size: 3rem;
+    font-size: 3vw;
     margin: 0;
 }
 
 header {
     position: fixed;
     width: 100%;
-    border: 1px solid black;
     text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 header > h1 {
@@ -47,26 +47,27 @@ div > span {
 div[id^='number'] {
     display: inline-block;
     height: 200px;
-    width: 200px;
+    width: 15vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 div {
-    border: 1px solid black;
 }
 
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    border: 1px solid black;
-    padding: 15px 25px;
+    padding-bottom: 13vh;
     text-align: center;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 footer > div {
     display: inline-block;
     font-weight: 900;
-    font-size: 5rem;
+    font-size: 6vw;
+    margin-right: 5vw;
 }
 
 .number {

@@ -46,17 +46,20 @@ function getNumberValue(element) {
   // Check for elements that overlap and get values
   $(".number").each(function(i, v) {
     var numberRect = v.getBoundingClientRect();
-
     overlap = getOverlap(thisRect1, numberRect);
-      debugger; // TODO: fix this mess to append value based on its position
+
+    // check if in dropzone
     if (overlap){
+      // check if first time setting value
       if (numberValue === ""){
         firstElement = v;
         numberValue += $(v).html();
       } else {
-        if (v.style.left > firstElement){
+        // check if its on left side
+        if (v.style.left < firstElement.style.left){
           firstElement = v;
-          numberValue.append($(v).html());
+          var newVal = $(v).html();
+          numberValue = newVal.concat(numberValue);
         } else {
           numberValue += $(v).html();
         }

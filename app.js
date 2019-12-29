@@ -38,33 +38,26 @@ function addRectangles(){
 }
 
 function getNumberValue(element) {
-  var firstElement;
+  var numberArr = [];
+  var sortedArr = [];
   var numberValue = "";
-  // Get this Rectangle
   var thisRect1 = element[0].getBoundingClientRect();
   
-  // Check for elements that overlap and get values
-  $(".number").each(function(i, v) {
+  // Get elements in dropzone
+  $(".number").each(function(i, v) { 
     var numberRect = v.getBoundingClientRect();
     overlap = getOverlap(thisRect1, numberRect);
-
-    // check if in dropzone
-    if (overlap){
-      // check if first time setting value
-      if (numberValue === ""){
-        firstElement = v;
-        numberValue += $(v).html();
-      } else {
-        // check if its on left side
-        if (v.style.left < firstElement.style.left){
-          firstElement = v;
-          var newVal = $(v).html();
-          numberValue = newVal.concat(numberValue);
-        } else {
-          numberValue += $(v).html();
-        }
-      }
+    if (overlap) {
+      numberArr.push(v);
     }
+  });
+
+  // Put elements in order
+  sortedArr = numberArr.sort(function(a, b) {return a.offsetLeft-b.offsetLeft})
+
+  //assign value
+  $(sortedArr).each(function(i, v){
+    numberValue += $(v).html();
   });
 
   return numberValue;

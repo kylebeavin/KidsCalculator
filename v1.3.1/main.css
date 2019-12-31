@@ -1,65 +1,99 @@
-/* header {
-    text-align: center;
-}
+ body {
+    overflow: hidden;
+} 
 
-main {
-    height: 75vh;
-    border: 1px solid black;
-}
-
-main > div {
-    height: 100%;
-}
-
-div {
-    font-size: 100px;
+header {
+     margin-bottom: 4em;
+     text-align: center;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 footer {
     position: fixed;
     bottom: 0;
+    width: 100%;
     text-align: center;
-    padding-bottom: 100px;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-footer > div {
+div[id^='number'] {
+    height: 125px;
+    /* background-color: rgba(182, 182, 182, 0.445); */
+}
+
+.hr {
+    margin-left: auto;
+    margin-right: auto;
+    width: 93%;
+    border: 1px solid black;
+}
+
+.hr.b {
+    border: 1px solid rgb(241, 250, 253);
+}
+
+.number-container {
     display: inline-block;  
-    margin-right: 50px;
+    margin-right: 68px;
+    margin-bottom: 90px;
 } 
 
 .number {
     position: fixed;
     font-size: 100px;
-    margin-right: 50px;
     line-height: .8;
 }
 
-.hr {
-    border: 1px solid black;
-    width: 100%;
+#add {
     height: 0;
-} */
- 
-body {
-    position: absolute;
-    height: 100vh;
-    overflow: hidden;
-} 
-
-footer {
-    margin-top: 100%;
-    text-align: center;
-}
-
-.number-container {
-    display: inline-block;  
-    margin-right: 70px;
-    margin-bottom: 90px;
-} 
-
-.number {
-    position: absolute;
     font-size: 100px;
-    margin-right: 50px;
-    line-height: .8;
 }
+
+#equals {
+    display: none;
+    font-size: 100px;
+}
+
+#number-z {
+    padding-right: 30px;
+    text-align: right;
+    font-size: 100px;
+}
+
+/* phone (landscape) ------------------ */
+@media screen and (orientation: landscape){
+
+    #add {
+        padding: 0;
+    }
+    
+    #equals {
+        display: block;
+        padding: 0;
+    }
+    
+    #hr {
+        display: none;
+    }
+}
+
+/* tablet (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) {
+
+    header {
+        margin-bottom: 12em;
+    }
+}
+    
+/* tablet (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (orientation : landscape) {
+
+    .col-md-12 {
+        max-width: 25%;
+    }
+
+    #number-z {
+        text-align: left;
+    }
+}
+    

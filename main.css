@@ -63,6 +63,10 @@ div[id^='number'] {
 /* phone (landscape) ------------------ */
 @media screen and (orientation: landscape){
 
+    .col-md-12 {
+        max-width: 25%;
+    }
+    
     #add {
         padding: 0;
     }
@@ -77,8 +81,8 @@ div[id^='number'] {
     }
 }
 
-/* tablet (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) {
+/* tablet (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (orientation: portrait) {
 
     header {
         margin-bottom: 12em;
@@ -86,8 +90,12 @@ div[id^='number'] {
 }
     
 /* tablet (landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (orientation : landscape) {
+@media only screen and (min-device-width: 850px) and (orientation: landscape) {
 
+    header {
+        margin-bottom: 12em;
+    }
+    
     .col-md-12 {
         max-width: 25%;
     }

@@ -14,6 +14,11 @@ $(function(){
         addRectangles();
       });
 
+      // Resize event listener(device orientation) reset numbers
+      $(window).on("resize", function (e) {
+        resetNumbers();
+      });
+
 });
 
 function addRectangles(){
@@ -72,4 +77,9 @@ function getOverlap(rect1, rect2) {
     rect1.top > rect2.bottom)
 
   return overlap;
+}
+
+function resetNumbers() {
+  $(".number").removeAttr("style");
+  $("#number-z").html("");
 }
